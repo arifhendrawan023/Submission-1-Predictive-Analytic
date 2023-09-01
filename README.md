@@ -21,34 +21,16 @@ Pendekatan machine learning memiliki beberapa kontribusi spesifik dalam penangan
 ## Business Understanding
 
 Problem Statement 1:
-Terdapat peningkatan signifikan dalam angka kematian akibat penyakit kardiovaskular (CVD) secara global, dengan sekitar 17,9 juta kematian setiap tahun, menyumbang 31% dari seluruh kematian di dunia. Penyebab utama kematian adalah serangan jantung dan stroke, dan banyak kematian ini terjadi pada usia di bawah 70 tahun. Kehadiran faktor risiko seperti hipertensi, diabetes, dan hiperlipidemia berkontribusi pada risiko penyakit kardiovaskular. Oleh karena itu, diperlukan pendekatan yang lebih efektif untuk deteksi dini dan manajemen penyakit kardiovaskular.
+Bagaimana cara pendekatan yang lebih efektif untuk deteksi dini dan manajemen penyakit kardiovaskular untuk mengurangi angka kematian dan dampaknya terhadap kesehatan masyarakat ?
 
 Goal 1:
-Mengembangkan model prediksi menggunakan teknik machine learning (K-Nearest Neighbor, Random Forest, dan Boosting Algorithm) untuk mengidentifikasi individu dengan risiko penyakit kardiovaskular yang lebih tinggi. Tujuan utama adalah meningkatkan deteksi dini penyakit kardiovaskular dan mengurangi angka kematian prematur akibat penyakit ini.
+Dengan cara mengembangkan model prediksi menggunakan teknik machine learning (K-Nearest Neighbor, Random Forest, dan Boosting Algorithm) untuk mengidentifikasi individu dengan risiko penyakit kardiovaskular yang lebih tinggi.
 
 Problem Statement 2:
-Pengelolaan penyakit jantung gagal menjadi tantangan signifikan dalam perawatan penyakit kardiovaskular. Identifikasi pasien yang berisiko tinggi mengalami gagal jantung dini sangat penting untuk menerapkan intervensi yang tepat waktu. Namun, metode konvensional tidak selalu dapat mengidentifikasi pasien dengan akurasi tinggi dan mengoptimalkan pengelolaan penyakit jantung gagal.
+Bagaimana meningkatkan efisiensi dan akurasi pengelolaan penyakit kardiovaskular dengan pendekatan yang memanfaatkan teknologi machine learning?
 
 Goal 2:
-Menggunakan pendekatan machine learning seperti K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mengembangkan model prediksi risiko penyakit jantung gagal berdasarkan data klinis dan faktor risiko. Tujuan utamanya adalah meningkatkan akurasi identifikasi pasien yang berisiko tinggi mengalami gagal jantung sehingga dapat diambil tindakan pencegahan dan pengelolaan yang lebih efektif.
-
-Problem Statement 3:
-Deteksi penyakit kardiovaskular pada tahap awal menjadi tantangan penting dalam upaya mengurangi dampak penyakit ini pada populasi. Metode tradisional mungkin tidak cukup sensitif dalam mengenali tanda-tanda awal penyakit kardiovaskular, yang mengarah pada diagnosis yang terlambat dan komplikasi yang lebih serius.
-
-Goal 3:
-Mengaplikasikan teknik machine learning seperti K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mengembangkan model prediksi dini penyakit kardiovaskular berdasarkan data klinis dan riwayat pasien. Tujuan utamanya adalah meningkatkan sensitivitas deteksi dini penyakit kardiovaskular sehingga tindakan pencegahan dapat diambil lebih awal dan mengurangi dampak buruk pada kesehatan pasien.
-
-Problem Statement 4:
-Pengambilan keputusan terkait manajemen penyakit kardiovaskular memerlukan evaluasi menyeluruh atas risiko dan kondisi pasien. Metode konvensional mungkin menghadapi kendala dalam mengolah data kompleks dan menggabungkan informasi dari berbagai faktor risiko dan gejala.
-
-Goal 4:
-Menggunakan pendekatan machine learning seperti K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mengembangkan model yang dapat mengintegrasikan data klinis dan faktor risiko yang kompleks dalam menilai risiko penyakit kardiovaskular dan mengelola pasien. Tujuan utamanya adalah meningkatkan akurasi dan kesesuaian dalam pengambilan keputusan medis terkait penyakit kardiovaskular.
-
-Problem Statement 5:
-Pada pengembangan model machine learning untuk prediksi penyakit kardiovaskular, optimasi parameter yang efektif menjadi tantangan utama. Parameter yang tidak dioptimalkan atau pemilihan parameter secara manual dapat menghambat kinerja model dan mengurangi akurasi prediksi yang dapat dicapai.
-
-Goal 5:
-Tujuan dari upaya ini adalah memanfaatkan teknik optimasi hyperparameter, terutama melalui metode Random Search, untuk menemukan kombinasi parameter yang optimal dalam model prediksi penyakit kardiovaskular. Dengan melakukan pencarian parameter secara acak dan terstruktur, tujuan utama adalah meningkatkan akurasi dan performa keseluruhan model dengan mengidentifikasi parameter terbaik yang sesuai untuk algoritma machine learning yang digunakan.
+Dengan cara memanfaatkan teknik optimasi hyperparameter, terutama melalui metode Random Search, untuk menemukan kombinasi parameter yang optimal dalam model prediksi penyakit kardiovaskular. Dengan melakukan pencarian parameter secara acak dan terstruktur, tujuan utama adalah meningkatkan akurasi dan performa keseluruhan model dengan mengidentifikasi parameter terbaik yang sesuai untuk algoritma machine learning yang digunakan.
 
 ## Solution statements
 Solusi untuk permasalahan deteksi dini penyakit kardiovaskular menggunakan metode K-Nearest Neighbor, Random Forest, dan Boosting Algorithm melalui pendekatan machine learning adalah sebagai berikut:
@@ -238,6 +220,13 @@ Teknik data preparation yang dilakukan :
 - models.loc['train_mse', 'KNN'] = train_mse_knn: Memasukkan nilai MSE pada data pelatihan ke dalam DataFrame models.
 - models.loc['test_mse', 'KNN'] = test_mse_knn: Memasukkan nilai MSE pada data pengujian ke dalam DataFrame models.
 
+
+Berikut adalah nilai parameter untuk algoritma K-Nearest Neighbors Regressor (KNN) :
+- n_neighbors: Nilai-nilai yang diuji adalah 1 hingga 20.
+- n_iter: Jumlah iterasi acak yang dilakukan dalam pencarian parameter acak (dalam kasus ini, 10 iterasi acak).
+- scoring: Metrik penilaian yang digunakan dalam pencarian parameter (dalam kasus ini, 'neg_mean_squared_error').
+- cv: Jumlah lipatan silang dalam validasi silang (dalam kasus ini, 5 lipatan silang).
+
 **Membuat model Random Forest dengan Hyperparameter Random Search
 - rf = RandomForestRegressor(): Pada baris ini, objek model Random Forest Regressor dibuat dengan parameter default. Ini adalah model dasar yang nantinya akan dioptimalkan menggunakan RandomizedSearchCV.
 - param_dist_rf = { ... }: Ini adalah kamus yang berisi himpunan parameter yang akan dioptimalkan untuk model Random Forest. Parameter yang didefinisikan adalah:
@@ -257,6 +246,15 @@ Teknik data preparation yang dilakukan :
 - test_mse_rf = mean_squared_error(...): Menghitung Mean Squared Error pada data pengujian menggunakan model Random Forest terbaik.
 - models.loc['train_mse', 'RandomForest'] = train_mse_rf: Memasukkan nilai MSE pada data pelatihan ke dalam DataFrame models.
 - models.loc['test_mse', 'RandomForest'] = test_mse_rf: Memasukkan nilai MSE pada data pengujian ke dalam DataFrame models.
+
+Berikut adalah nilai parameter untuk algoritma Random Forest Regressor:
+- n_estimators: Nilai-nilai yang diuji adalah 50, 100, 150, 200, dan 250.
+- max_depth: Nilai-nilai yang diuji meliputi None (tidak ada batasan kedalaman) serta 5, 10, 15, dan 20.
+- min_samples_split: Nilai-nilai yang diuji adalah dari 2 hingga 10.
+- min_samples_leaf: Nilai-nilai yang diuji adalah dari 1 hingga 10.
+- n_iter: Jumlah iterasi acak yang dilakukan dalam pencarian parameter acak (dalam kasus ini, 10 iterasi acak).
+- scoring: Metrik penilaian yang digunakan dalam pencarian parameter (dalam kasus ini, 'neg_mean_squared_error').
+- cv: Jumlah lipatan silang dalam validasi silang (dalam kasus ini, 5 lipatan silang).
 
 **Membuat model GradientBoostingRegressor dengan Hyperparameter Random Search
 - boosting = GradientBoostingRegressor(): Pada baris ini, objek model Gradient Boosting Regressor dibuat dengan parameter default. Ini adalah model dasar yang nantinya akan dioptimalkan menggunakan RandomizedSearchCV.
@@ -279,6 +277,17 @@ Teknik data preparation yang dilakukan :
 - test_mse_boosting = mean_squared_error(...): Menghitung Mean Squared Error pada data pengujian menggunakan model Gradient Boosting terbaik.
 - models.loc['train_mse', 'Boosting'] = train_mse_boosting: Memasukkan nilai MSE pada data pelatihan ke dalam DataFrame models.
 - models.loc['test_mse', 'Boosting'] = test_mse_boosting: Memasukkan nilai MSE pada data pengujian ke dalam DataFrame models.
+
+
+Berikut adalah nilai parameter untuk algoritma Gradient Boosting Regressor:
+- n_estimators: Nilai-nilai yang diuji adalah 50, 100, 150, 200, dan 250.
+- learning_rate: Nilai-nilai yang diuji adalah 0.001, 0.01, 0.1, 0.2, dan 0.3.
+- max_depth: Nilai-nilai yang diuji adalah 3, 4, 5, 6, 7, 8, 9, dan 10.
+- min_samples_split: Nilai-nilai yang diuji adalah dari 2 hingga 10.
+- min_samples_leaf: Nilai-nilai yang diuji adalah dari 1 hingga 10.
+- n_iter: Jumlah iterasi acak yang dilakukan dalam pencarian parameter acak (dalam kasus ini, 10 iterasi acak).
+- scoring: Metrik penilaian yang digunakan dalam pencarian parameter (dalam kasus ini, 'neg_mean_squared_error').
+- cv: Jumlah lipatan silang dalam validasi silang (dalam kasus ini, 5 lipatan silang).
   
 ## Evaluation
 Untuk mengukur evaluasi menggunakan metrik MSE
@@ -290,9 +299,13 @@ MSE adalah metrik evaluasi yang mengukur rata-rata dari kuadrat perbedaan antara
 - Penekanan pada Kesalahan: Kesalahan besar akan berkontribusi secara signifikan pada nilai MSE yang tinggi, mendorong pengembangan model yang lebih baik dan lebih akurat.
 Ketika tujuan adalah meningkatkan akurasi prediksi risiko penyakit kardiovaskular dan mengidentifikasi individu dengan risiko yang lebih tinggi, MSE menyediakan indikator yang kuat dan relevan
 
-**Melakukan uji evaluasi model
+- Melakukan uji evaluasi model
 
-![Screenshot 2023-09-01 022454](https://github.com/arifhendrawan023/Submission-1-Predictive-Analytic/assets/55530939/98cfb870-d1f6-488a-8c3e-cbf3f89e7bdd)
+|           |   train  |   test   |
+| :---      |   :---:  |  :---:   |
+| KNN       | 0.000082 | 0.000142 |
+| RF        | 0.000016 | 0.000133 |
+| Boosting  | 0.000033 | 0.000138 |
 
 Dari hasil evaluasi model menggunakan MSE diperoleh hasil bahwa Random Forest memiliki tingkat error yang lebih rendah dibandingkan yang lainnya.
 
@@ -302,7 +315,9 @@ Dari gambar di atas, terlihat bahwa, model Random Forest (RF) memberikan nilai e
 
 - Menguji dengan membuat prediksi
 
-![Screenshot 2023-09-01 022803](https://github.com/arifhendrawan023/Submission-1-Predictive-Analytic/assets/55530939/9ed1cd2b-9425-4ea8-8a31-dbdf65c95c15)
+|        |   y_true  | prediksi_KNN | prediksi_RF | prediksi_Boosting |
+| :---   |   :---:   |  :---:       |    :---:    |       :---:       |
+| 63     |     1     |      0.8     |      1.0    |         0.9       |
 
 
 Berdasarkan hasil prediksi tampak bahwa setiap model (KNN, Random Forest, dan Boosting) memberikan prediksi yang berbeda untuk satu data uji dengan nilai aktual yaitu 1.
